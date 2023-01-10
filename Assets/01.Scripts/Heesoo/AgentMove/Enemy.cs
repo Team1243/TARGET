@@ -2,18 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyType
-{
-    Real,
-    Fake
-}
-
 public class Enemy : MonoBehaviour
 {
     SpriteRenderer _spriteRenderer;
     Rigidbody2D _rigid;
     
-    public EnemyType Type;
     public float moveSpeed;
 
     private Vector2 dir;
@@ -79,6 +72,23 @@ public class Enemy : MonoBehaviour
         else if (dir == Vector2.left)
         {
             _spriteRenderer.flipX = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("OutLine"))
+        {
+            OutLine outLine = collision.GetComponent<OutLine>();
+
+            if (outLine.dirType == DirType.Right)
+            {
+                dir = Vector2.left;
+            }
+            else if (outLine.dirType == DirType.Left)
+            {
+                dir = Vector2.right;
+            }
         }
     }
 }

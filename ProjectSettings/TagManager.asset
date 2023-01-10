@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Chicken
-  - Hand
-  - Egg
+  - Enemy
+  - NormalHuman
+  - OutLine
   layers:
   - Default
   - TransparentFX
@@ -14,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - NormalHuman
   - 
   - 
   - 
