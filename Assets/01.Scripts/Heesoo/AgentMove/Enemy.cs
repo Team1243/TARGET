@@ -47,13 +47,13 @@ public class Enemy : MonoBehaviour
 
     private void ChangeDir()
     {
-        int random = Random.Range(0, 3);
+        int random = Random.Range(0, 5);
     
-        if (random == 0)
+        if (random == 0 || random == 3)
         {
             dir = Vector2.right;
         }
-        else if (random == 1)
+        else if (random == 1 || random == 4)
         {
             dir = Vector2.left;
         }

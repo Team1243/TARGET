@@ -33,7 +33,7 @@ public class Human : MonoBehaviour
     {
         while (true)
         {
-            float delay = Random.Range(0, 4);
+            float delay = Random.Range(1, 3);
             yield return new WaitForSeconds(delay);
 
             ChangeDir();
@@ -47,7 +47,7 @@ public class Human : MonoBehaviour
 
     private void ChangeDir()
     {
-        int random = Random.Range(0, 2);
+        int random = Random.Range(0, 3);
 
         if (random == 0)
         {
@@ -56,6 +56,10 @@ public class Human : MonoBehaviour
         else if (random == 1)
         {
             dir = Vector2.left;
+        }
+        else if (random == 2)
+        {
+            dir = Vector2.zero;
         }
     }
 
