@@ -47,13 +47,13 @@ TagManager:
   - name: BackGround
     uniqueID: 1347646783
     locked: 0
-  - name: Hand
+  - name: Human
     uniqueID: 1423302401
     locked: 0
-  - name: Egg
+  - name: Player
     uniqueID: 1787464929
     locked: 0
-  - name: Chicken
+  - name: Knife
     uniqueID: 120341527
     locked: 0
   - name: UI

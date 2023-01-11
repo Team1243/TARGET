@@ -355,6 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d422802cb709024e91f6dc5316b8c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  garbage: {fileID: 0}
   leftSpawnPosition: {x: -2.9, y: 2.8}
   rightSpawnPosition: {x: 2.9, y: 2.8}
   enemyPrefab: {fileID: 850003320970483734, guid: 8f7b928207eef3746b33ba9c1b32998b, type: 3}
@@ -945,7 +946,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.5
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
