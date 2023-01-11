@@ -403,7 +403,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
-  knifeIndex: 5
 --- !u!4 &377065390
 Transform:
   m_ObjectHideFlags: 0

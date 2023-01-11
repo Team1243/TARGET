@@ -70,9 +70,14 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
     {
         Instantiate(_bullet, _knifeTrm.position, _knifeTrm.rotation);
         GameManager.Instance.gameState = GameState.Shooting;
-        GameManager.Instance.knifeIndex--;
         sequenceRotation.Kill();
         _knifeRotator.localRotation = Quaternion.identity;
         _knifeSpriteRenderer.enabled = false;
+    }
+
+    public void ReGame()
+    {
+        _knifeSpriteRenderer.enabled = true;
+        GameManager.Instance.gameState = GameState.Ready;
     }
 }

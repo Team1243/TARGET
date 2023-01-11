@@ -123,7 +123,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _knifeMoveMaxPos: {x: 0, y: 7, z: 0}
+  _knifeMoveMaxPos: {x: 0, y: 6, z: 0}
   _rotationTime: 0.2
   _moveTime: 1
 --- !u!1 &5535883636984468000
