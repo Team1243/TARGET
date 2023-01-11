@@ -7,7 +7,7 @@ public class RoundSystem : MonoBehaviour
     public static RoundSystem Instance;
 
     // 현재 라운드수
-    private int roundCount = 0;
+    public int roundCount = 0;
     // 생성물 생성 위치
     [SerializeField] private GameObject garbage;
 
@@ -42,9 +42,7 @@ public class RoundSystem : MonoBehaviour
 
     private void Start()
     {
-        // 초기화
-        _enemy.moveSpeed = enemySpeed;
-        _human.moveSpeed = humanSpeed;
+        Init();
     }
 
     public void RoundLoop()
@@ -52,20 +50,36 @@ public class RoundSystem : MonoBehaviour
         StartCoroutine(NextRound());
     }
 
+    public void GameLoop()
+    {
+        StartCoroutine(NextGame());
+    }
+
     IEnumerator NextRound()
     {
         roundCount++;
 
-        Reset();
+        ObjectReset();
         
         yield return null;
         
         Spawn();
         ChangeProperty();
-
     }
 
-    [ContextMenu("스폰")]
+    IEnumerator NextGame()
+    {
+        Init();
+        
+        yield return null;
+
+        ObjectReset();
+
+        yield return null;
+
+        Spawn();
+    }
+
     public void Spawn()
     {
         print("Spawn");
@@ -96,31 +110,38 @@ public class RoundSystem : MonoBehaviour
     public void ChangeProperty()
     {
         // 생성수 조정
-        // round 수가 5의 배수
-        if (roundCount % 6 == 0)
+        if (roundCount >= 8 && roundCount % 10 == 0)
         {
             enemySpawnCount++;
         }
-        // round 수가 4의 배수
-        else if (roundCount % 5 == 0)
+        else if (roundCount % 9 == 0)
         {
             humanSpawnCount++;
         }
 
         // 생성물들 속도 조정
-        _enemy.moveSpeed *= 1.02f;
-        _human.moveSpeed *= 1.02f;
+        _enemy.moveSpeed *= 1.05f;
+        _human.moveSpeed *= 1.05f;
     }
 
-    [ContextMenu("리셋")]
-    public void Reset()
+    public void ObjectReset()
     {
-        print("Reset");
+        print("ObjReset");
 
         for (int i = 0; i < garbage.transform.childCount; i++)
         {
             GameObject obj = transform.GetChild(0).GetChild(i).gameObject;
             Destroy(obj);
         }
+    }
+
+    public void Init()
+    {
+        // 초기화
+        roundCount = 1;
+        _enemy.moveSpeed = enemySpeed;
+        _human.moveSpeed = humanSpeed;
+        enemySpawnCount = 1;
+        humanSpawnCount = 2;
     }
 }
