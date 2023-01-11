@@ -19,10 +19,16 @@ public class KnifeCollision : MonoBehaviour
         switch (collisionName)
         {
             case "NormalHuman":
+                if (GameManager.Instance.gameState == GameState.GameClear)
+                    return;
+                
                 GameManager.Instance.GameOver();
                 Destroy(gameObject);
                 break;
             case "Enemy":
+                if (GameManager.Instance.gameState == GameState.GameOver)
+                    return;
+
                 _dieEnemyCount++;
                 if (RoundSystem.Instance.enemySpawnCount <= _dieEnemyCount)
                 {
