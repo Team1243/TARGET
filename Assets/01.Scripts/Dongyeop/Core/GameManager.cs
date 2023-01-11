@@ -24,10 +24,14 @@ public class GameManager : MonoBehaviour
             Destroy(this);
 
         gameState = GameState.Ready;
-        RoundSystem.Instance.RoundLoop(); 
      }
 
-     public void GameClear()
+    private void Start()
+    {
+        RoundSystem.Instance.RoundLoop(); 
+    }
+
+    public void GameClear()
      {
         gameState = GameState.GameClear;
         _gameClear?.Invoke();

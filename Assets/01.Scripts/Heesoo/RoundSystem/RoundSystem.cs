@@ -47,19 +47,6 @@ public class RoundSystem : MonoBehaviour
         _human.moveSpeed = humanSpeed;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RoundLoop();
-        }
-        
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reset();
-        }
-    }
-    
     public void RoundLoop()
     {
         StartCoroutine(NextRound());
@@ -70,10 +57,12 @@ public class RoundSystem : MonoBehaviour
         roundCount++;
 
         Reset();
+        
+        yield return null;
+        
         Spawn();
         ChangeProperty();
 
-        yield return null;
     }
 
     [ContextMenu("스폰")]
@@ -102,18 +91,18 @@ public class RoundSystem : MonoBehaviour
 
             humanPrefab.transform.position = spawnPosition;
         }
-    }
+    }   
 
     public void ChangeProperty()
     {
         // 생성수 조정
         // round 수가 5의 배수
-        if (roundCount % 5 == 0)
+        if (roundCount % 6 == 0)
         {
             enemySpawnCount++;
         }
         // round 수가 4의 배수
-        else if (roundCount % 4 == 0)
+        else if (roundCount % 5 == 0)
         {
             humanSpawnCount++;
         }
@@ -127,7 +116,7 @@ public class RoundSystem : MonoBehaviour
     public void Reset()
     {
         print("Reset");
-        
+
         for (int i = 0; i < garbage.transform.childCount; i++)
         {
             GameObject obj = transform.GetChild(0).GetChild(i).gameObject;
