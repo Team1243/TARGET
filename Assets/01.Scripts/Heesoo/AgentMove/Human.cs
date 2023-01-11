@@ -33,7 +33,7 @@ public class Human : MonoBehaviour
     {
         while (true)
         {
-            float delay = Random.Range(1, 3);
+            float delay = Random.Range(2, 4);
             yield return new WaitForSeconds(delay);
 
             ChangeDir();

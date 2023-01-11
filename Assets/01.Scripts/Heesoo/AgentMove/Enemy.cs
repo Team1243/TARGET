@@ -25,6 +25,11 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (RoundSystem.Instance.roundCount < 15)
+        {
+            dir = Vector2.zero;
+        }
+
         Flip();
         Move();
     }
@@ -33,7 +38,7 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            float delay = Random.Range(0, 3);
+            float delay = Random.Range(1, 3);
             yield return new WaitForSeconds(delay);
 
             ChangeDir();
@@ -48,7 +53,7 @@ public class Enemy : MonoBehaviour
     private void ChangeDir()
     {
         int random = Random.Range(0, 5);
-    
+        
         if (random == 0 || random == 3)
         {
             dir = Vector2.right;
