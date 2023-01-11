@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnifeMove : MonoBehaviour
+public class KnifeMove : MonoBehaviour //Knife의 움직임을 담당하는 스크립트
 {
     [SerializeField] private float _moveSpeed;
     private Rigidbody2D _rigidbody2D;
@@ -15,10 +15,5 @@ public class KnifeMove : MonoBehaviour
     private void Update() 
     {
         _rigidbody2D.velocity = transform.up * _moveSpeed;
-    }
-
-    public void KnifeMovement(Vector3 targetPos)
-    {
-        Vector3 movePosition = (targetPos - transform.localPosition).normalized;
     }
 }
