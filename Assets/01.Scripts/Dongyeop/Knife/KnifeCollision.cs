@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KnifeCollision : MonoBehaviour
 {
+    [SerializeField] private GameObject _particle;
+    [SerializeField] private AudioSource _audioSource;
     private Knife _knife;
     private int _dieEnemyCount = 0;
 
@@ -19,13 +21,16 @@ public class KnifeCollision : MonoBehaviour
         switch (collisionName)
         {
             case "NormalHuman":
+                _audioSource.Play();
                 if (GameManager.Instance.gameState == GameState.GameClear)
                     return;
                 
                 GameManager.Instance.GameOver();
+                Instantiate(_particle, transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 break;
             case "Enemy":
+                _audioSource.Play();
                 if (GameManager.Instance.gameState == GameState.GameOver)
                     return;
 
@@ -42,6 +47,7 @@ public class KnifeCollision : MonoBehaviour
                     Destroy(other.gameObject);
                     StartCoroutine(CollisionBullet());
                 }
+                Instantiate(_particle, transform.position, Quaternion.identity);
                 break;
             case "BulletDelLine":
                 StartCoroutine(CollisionBullet());

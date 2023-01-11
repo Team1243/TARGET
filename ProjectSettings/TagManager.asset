@@ -58,6 +58,9 @@ TagManager:
   - name: Knife
     uniqueID: 120341527
     locked: 0
+  - name: Effect
+    uniqueID: 1819350231
+    locked: 0
   - name: UI
     uniqueID: 72791547
     locked: 0
