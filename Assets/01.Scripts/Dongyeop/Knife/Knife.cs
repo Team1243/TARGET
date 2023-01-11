@@ -30,11 +30,6 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
         _knifeSpriteRenderer = transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
     }
 
-    private void Start() 
-    {
-        GameManager.Instance.gameState = GameState.Ready;
-    }
-
     private void Update() 
     {
         if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
@@ -73,6 +68,8 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
         {
             if (GameManager.Instance.gameState == GameState.Flying)
             {
+                _knifeRotator.localRotation = Quaternion.identity;
+                _knifeRotationIndex = 0;
                 sequenceRotation.Kill();
                 GameManager.Instance.GameOver();
             }
@@ -90,6 +87,8 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
 
     public void ReGame()
     {
+        _knifeRotator.localRotation = Quaternion.identity;
+        _knifeRotationIndex = 0;
         _knifeSpriteRenderer.enabled = true;
         GameManager.Instance.gameState = GameState.Ready;
     }
