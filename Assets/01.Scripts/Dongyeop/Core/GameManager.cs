@@ -7,12 +7,15 @@ public class GameManager : MonoBehaviour
 {
     [Header ("Core")]
     public static GameManager Instance;
-    public GameState gameState = GameState.Ready; // 현재 게임의 상태를 표시하는 Enum
+    public GameState gameState = GameState.Title; // 현재 게임의 상태를 표시하는 Enum
 
     [Header ("Events")]
     [SerializeField] private UnityEvent _gameClear;
     [SerializeField] private UnityEvent _gameOver;
 
+    [Header ("UI")]
+    [SerializeField] private GameObject _titleUI; 
+    [SerializeField] private GameObject _gameOverUI;
     private int _enemyIndex;
     private int _humanIndex;
 
@@ -23,12 +26,26 @@ public class GameManager : MonoBehaviour
         else
             Destroy(this);
 
-        gameState = GameState.Ready;
+        gameState = GameState.Title;
      }
 
     private void Start()
     {
         RoundSystem.Instance.RoundLoop(); 
+    }
+
+    private void Update() 
+    {
+        if (gameState == GameState.Title && (Input.GetMouseButtonDown(0) || Input.touchCount > 0))
+        {
+            _titleUI.SetActive(false);
+            gameState = GameState.Ready;
+        }    
+        else if (gameState == GameState.GameOver && (Input.GetMouseButtonDown(0) || Input.touchCount > 0))
+        {
+            _gameOverUI.SetActive(false);
+            gameState = GameState.Ready;
+        }
     }
 
     public void GameClear()

@@ -20,13 +20,22 @@ public class KnifeCollision : MonoBehaviour
         {
             case "NormalHuman":
                 GameManager.Instance.GameOver();
+                Destroy(gameObject);
                 break;
             case "Enemy":
                 _dieEnemyCount++;
                 if (RoundSystem.Instance.enemySpawnCount <= _dieEnemyCount)
+                {
                     GameManager.Instance.GameClear();
-                else
+                    _dieEnemyCount = 0;
+                    Destroy(other.gameObject);
                     StartCoroutine(CollisionBullet());
+                }
+                else
+                {
+                    Destroy(other.gameObject);
+                    StartCoroutine(CollisionBullet());
+                }
                 break;
             case "BulletDelLine":
                 StartCoroutine(CollisionBullet());
@@ -44,7 +53,7 @@ public class KnifeCollision : MonoBehaviour
     {
         GameManager.Instance.gameState = GameState.End;
         DestroyObject();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         _knife.ReGame();
         Destroy(gameObject);
     }
