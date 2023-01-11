@@ -53,7 +53,7 @@ public class KnifeCollision : MonoBehaviour
     {
         GameManager.Instance.gameState = GameState.End;
         DestroyObject();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.3f);
         _knife.ReGame();
         Destroy(gameObject);
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
 {
@@ -21,19 +22,30 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
     private Transform _knifeTrm;
     private Sequence sequenceRotation;
 
+    private TextMeshProUGUI txt;
+
     private int _knifeRotationIndex;
+
+    public bool isKnifeMoveEnd = false;
 
     private void Awake() 
     {
         _knifeRotator = transform.GetChild(0).GetComponent<Transform>();
         _knifeTrm = transform.GetChild(0).GetChild(0).GetComponent<Transform>();
         _knifeSpriteRenderer = transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
+
+        txt = GameObject.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
     }
 
     private void Update() 
     {
-        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
+        if (Input.GetMouseButtonDown(0))
+        {
             DebuggingUpdate();
+            txt.text = "YES";
+        }
+        else
+            txt.text = "NO";
     }
 
     private void DebuggingUpdate()
@@ -61,11 +73,14 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
     }
 
     private void KnifeMove() // 정지 상태에서 움직임
-    {
+    {   
+        isKnifeMoveEnd = false;
+
         Sequence sequence = DOTween.Sequence();
         sequence.Append(_knifeRotator.DOLocalMove(_knifeMoveMaxPos, _moveTime).SetLoops(2, LoopType.Yoyo));
         sequence.AppendCallback(() =>
         {
+            isKnifeMoveEnd = true;;
             if (GameManager.Instance.gameState == GameState.Flying)
             {
                 _knifeRotator.localRotation = Quaternion.identity;

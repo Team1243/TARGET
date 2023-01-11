@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [Header ("UI")]
     [SerializeField] private GameObject _titleUI; 
     [SerializeField] private GameObject _gameOverUI;
+    
+    private Knife _knife;
     private int _enemyIndex;
     private int _humanIndex;
 
@@ -27,6 +29,9 @@ public class GameManager : MonoBehaviour
             Destroy(this);
 
         gameState = GameState.Title;
+        _knife = GameObject.Find("Player").GetComponent<Knife>();
+
+        Application.targetFrameRate = 60;
      }
 
     private void Start()
@@ -36,12 +41,12 @@ public class GameManager : MonoBehaviour
 
     private void Update() 
     {
-        if (gameState == GameState.Title && (Input.GetMouseButtonDown(0) || Input.touchCount > 0))
+        if (gameState == GameState.Title && (Input.GetMouseButtonDown(0)))
         {
             _titleUI.SetActive(false);
             gameState = GameState.Ready;
         }    
-        else if (gameState == GameState.GameOver && (Input.GetMouseButtonDown(0) || Input.touchCount > 0))
+        else if ((gameState == GameState.GameOver && (Input.GetMouseButtonDown(0))) && _knife.isKnifeMoveEnd)
         {
             _gameOverUI.SetActive(false);
             gameState = GameState.Ready;
@@ -59,6 +64,7 @@ public class GameManager : MonoBehaviour
      {
         gameState = GameState.GameOver;
         _gameOver?.Invoke();
+        gameState = GameState.GameOver;
         print("Game Over");
      }
 }
