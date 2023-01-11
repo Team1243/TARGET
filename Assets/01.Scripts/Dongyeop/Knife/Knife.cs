@@ -64,6 +64,14 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
     {
         Sequence sequence = DOTween.Sequence();
         sequence.Append(_knifeRotator.DOLocalMove(_knifeMoveMaxPos, _moveTime).SetLoops(2, LoopType.Yoyo));
+        sequence.AppendCallback(() =>
+        {
+            if (GameManager.Instance.gameState != GameState.Flying)
+            {
+                sequenceRotation.Kill();
+                GameManager.Instance.GameOver();
+            }
+        });
     }
 
     private void KnifeShoot() // 칼이 올라간 상태에서 칼을 발사

@@ -18,34 +18,27 @@ public class KnifeCollision : MonoBehaviour
         switch (collisionName)
         {
             case "NormalHuman":
-                print("Game Over");
-                GameManager.Instance.gameState = GameState.End;
-                StartCoroutine(CollisionBullet());
+                GameManager.Instance.GameOver();
                 break;
             case "Enemy":
-                print("Enemy Die");
-                GameManager.Instance.gameState = GameState.End;
                 StartCoroutine(CollisionBullet());
                 break;
             case "OutLine":
-                print ("Collision OutLine");
                 StartCoroutine(CollisionBullet());
                 break;
             default:
                 Debug.LogError($"{other.name} is none tag Object");
-                GameManager.Instance.gameState = GameState.End;
                 break;
         }
     }
 
     private IEnumerator CollisionBullet() // Bullet이 무언가에 닿아서 재시작/게임종료가 필요할떄 실행 
     {
-        print(1);
-        yield return new WaitForSeconds(1);
-        print(2);
+        GameManager.Instance.gameState = GameState.End;
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(1.5f);
         _knife.ReGame();
-        print(3);
         Destroy(gameObject);
-        print(4);
     }
 }

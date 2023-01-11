@@ -16,4 +16,10 @@ public class GameManager : MonoBehaviour
 
         gameState = GameState.Ready;    
      }
+
+     public void GameOver()
+     {
+        gameState = GameState.End;
+        Debug.Log("Gmae Over");
+     }
 }

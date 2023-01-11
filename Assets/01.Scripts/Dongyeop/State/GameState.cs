@@ -3,5 +3,6 @@ public enum GameState
     Ready,
     Flying,
     Shooting,
-    End
+    End,
+    GameOver
 }
