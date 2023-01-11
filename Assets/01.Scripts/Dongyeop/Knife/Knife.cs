@@ -27,7 +27,7 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
 
     private void Start() 
     {
-        GameManager.Instance.gameState = GameState.Ready;
+        GameManager.Instance.gamestate = gamestate.Ready;
     }
 
     private void Update() 
@@ -38,14 +38,14 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
 
     private void DebuggingUpdate()
     {
-        switch (GameManager.Instance.gameState)
+        switch (GameManager.Instance.gamestate)
         {
-            case (GameState.Ready):
-                GameManager.Instance.gameState = GameState.Flying;
+            case (gamestate.Ready):
+                GameManager.Instance.gamestate = gamestate.Flying;
                 KnifeRotation();
                 KnifeMove();
                 break;
-            case (GameState.Flying): 
+            case (gamestate.Flying): 
                 KnifeShoot();
                 break;
         }
@@ -66,7 +66,7 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
         sequence.Append(_knifeRotator.DOLocalMove(_knifeMoveMaxPos, _moveTime).SetLoops(2, LoopType.Yoyo));
         sequence.AppendCallback(() =>
         {
-            if (GameManager.Instance.gameState != GameState.Flying)
+            if (GameManager.Instance.gamestate != gamestate.Flying)
             {
                 sequenceRotation.Kill();
                 GameManager.Instance.GameOver();
@@ -77,7 +77,7 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
     private void KnifeShoot() // 칼이 올라간 상태에서 칼을 발사
     {
         Instantiate(_bullet, _knifeTrm.position, _knifeTrm.rotation);
-        GameManager.Instance.gameState = GameState.Shooting;
+        GameManager.Instance.gamestate = gamestate.Shooting;
         sequenceRotation.Kill();
         _knifeRotator.localRotation = Quaternion.identity;
         _knifeSpriteRenderer.enabled = false;
@@ -86,6 +86,6 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
     public void ReGame()
     {
         _knifeSpriteRenderer.enabled = true;
-        GameManager.Instance.gameState = GameState.Ready;
+        GameManager.Instance.gamestate = gamestate.Ready;
     }
 }

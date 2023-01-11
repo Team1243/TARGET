@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public GameState gameState = GameState.Ready; // 현재 게임의 상태를 표시하는 Enum
+    public gamestate gamestate = gamestate.Ready; // 현재 게임의 상태를 표시하는 Enum
 
      private void Awake() 
      {
@@ -14,12 +14,12 @@ public class GameManager : MonoBehaviour
         else
             Destroy(this);
 
-        gameState = GameState.Ready;    
+        gamestate = gamestate.Ready;    
      }
 
      public void GameOver()
      {
-        gameState = GameState.End;
-        Debug.Log("Gmae Over");
+        gamestate = gamestate.End;
+        print("Game OVer");
      }
 }
