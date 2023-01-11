@@ -7,7 +7,6 @@ TagManager:
   - Enemy
   - NormalHuman
   - OutLine
-  - BackGround
   layers:
   - Default
   - TransparentFX
@@ -48,14 +47,14 @@ TagManager:
   - name: BackGround
     uniqueID: 1347646783
     locked: 0
-  - name: Human
+  - name: Hand
     uniqueID: 1423302401
     locked: 0
-  - name: Player
-    uniqueID: 120341527
-    locked: 0
-  - name: Knife
+  - name: Egg
     uniqueID: 1787464929
+    locked: 0
+  - name: Chicken
+    uniqueID: 120341527
     locked: 0
   - name: UI
     uniqueID: 72791547

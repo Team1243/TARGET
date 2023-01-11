@@ -6,8 +6,8 @@ public class RoundSystem : MonoBehaviour
 {
     // 현재 라운드수
     private int roundCount = 0;
-    // 남아있는 적, 시민 리스트
-    private List<GameObject> garbageList = new ();
+    // 생성물 생성 위치
+    [SerializeField] private GameObject garbage;
 
     [Header("Spawn Position")]
     public Vector2 leftSpawnPosition;
@@ -52,7 +52,7 @@ public class RoundSystem : MonoBehaviour
             Reset();
         }
     }
-
+    
     public void RoundLoop()
     {
         StartCoroutine(NextRound());
@@ -69,6 +69,7 @@ public class RoundSystem : MonoBehaviour
         yield return null;
     }
 
+    [ContextMenu("스폰")]
     public void Spawn()
     {
         print("Spawn");
@@ -76,8 +77,7 @@ public class RoundSystem : MonoBehaviour
         // 에너미 소환
         for (int i = 0; i < enemySpawnCount; i++)
         {
-            Instantiate(enemyPrefab);
-            garbageList.Add(enemyPrefab);
+            Instantiate(enemyPrefab, garbage.transform);
             
             float random = Random.Range(leftSpawnPosition.x, rightSpawnPosition.x);
             Vector3 spawnPosition = new Vector3((float)random, leftSpawnPosition.y, 0);
@@ -88,8 +88,7 @@ public class RoundSystem : MonoBehaviour
         // 시민 소환
         for (int i = 0; i < humanSpawnCount; i++)
         {
-            Instantiate(humanPrefab);
-            garbageList.Add(humanPrefab);
+            Instantiate(humanPrefab, garbage.transform);
 
             float random = Random.Range(leftSpawnPosition.x, rightSpawnPosition.x);
             Vector3 spawnPosition = new Vector3((float)random, leftSpawnPosition.y, 0);
@@ -118,15 +117,15 @@ public class RoundSystem : MonoBehaviour
     }
 
     // 남아있는 Enemy, Human 가져와서 삭제
+    [ContextMenu("리셋")]
     public void Reset()
     {
         print("Reset");
-
-        foreach (GameObject garbage in garbageList)
+        
+        for (int i = 0; i < garbage.transform.childCount; i++)
         {
-            Destroy(garbage);
+            GameObject obj = transform.GetChild(0).GetChild(i).gameObject;
+            Destroy(obj);
         }
-
-        garbageList.Clear();
     }
 }
