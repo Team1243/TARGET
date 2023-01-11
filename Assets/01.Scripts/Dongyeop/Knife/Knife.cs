@@ -5,16 +5,21 @@ using DG.Tweening;
 
 public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
 {
+    [Header ("GameObject")]
     [SerializeField] private GameObject _bullet; // 생성할 Knife Prefab
-    [SerializeField] private AnimationCurve _animationCurve; // 어느 구간에 어느 속도로 움직일지
+    
+    [Header ("Move")]
     [SerializeField] private Vector3 _knifeMoveMaxPos; // 움직이고, 돌아갈 오브젝트
-    [SerializeField] private float _rotationTime; // 칼 돌아가는 시간 (90도)
     [SerializeField] private float _moveTime; // 칼 움직이는 시간 (편도)
+    
+    [Header ("Rotation")]
+    [SerializeField] private AnimationCurve _animationCurve; // 어느 구간에 어느 속도로 움직일지
+    [SerializeField] private float _rotationTime; // 칼 돌아가는 시간 (90도)
     
     private SpriteRenderer _knifeSpriteRenderer;
     private Transform _knifeRotator;
     private Transform _knifeTrm;
-    Sequence sequenceRotation;
+    private Sequence sequenceRotation;
 
     private int _knifeRotationIndex;
 
@@ -66,10 +71,10 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
         sequence.Append(_knifeRotator.DOLocalMove(_knifeMoveMaxPos, _moveTime).SetLoops(2, LoopType.Yoyo));
         sequence.AppendCallback(() =>
         {
-            if (GameManager.Instance.gameState != GameState.Flying)
+            if (GameManager.Instance.gameState == GameState.Flying)
             {
-                // sequenceRotation.Kill();
-                // GameManager.Instance.GameOver();
+                sequenceRotation.Kill();
+                GameManager.Instance.GameOver();
             }
         });
     }
@@ -85,7 +90,6 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
 
     public void ReGame()
     {
-        print(_knifeSpriteRenderer);
         _knifeSpriteRenderer.enabled = true;
         GameManager.Instance.gameState = GameState.Ready;
     }

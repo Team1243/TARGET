@@ -5,6 +5,7 @@ using UnityEngine;
 public class KnifeCollision : MonoBehaviour
 {
     private Knife _knife;
+    private int _dieEnemyCount = 0;
 
     private void Awake() 
     {
@@ -21,12 +22,17 @@ public class KnifeCollision : MonoBehaviour
                 GameManager.Instance.GameOver();
                 break;
             case "Enemy":
-                StartCoroutine(CollisionBullet());
+                _dieEnemyCount++;
+                if (RoundSystem.Instance.enemySpawnCount <= _dieEnemyCount)
+                    GameManager.Instance.GameClear();
+                else
+                    StartCoroutine(CollisionBullet());
                 break;
             case "BulletDelLine":
                 StartCoroutine(CollisionBullet());
                 break;
             case "OutLine":
+            case "WhiteBuilding":
                 break;
             default:
                 Debug.LogError($"{other.name} is none tag Object");

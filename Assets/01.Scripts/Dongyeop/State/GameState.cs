@@ -4,5 +4,6 @@ public enum GameState
     Flying,
     Shooting,
     End,
+    GameClear,
     GameOver
 }
