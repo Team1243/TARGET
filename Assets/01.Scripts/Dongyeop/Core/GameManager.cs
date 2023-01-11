@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameState gameState = GameState.Ready; // 현재 게임의 상태를 표시하는 Enum
 
+    private int _enemyIndex;
+    private int _humanIndex;
+
      private void Awake() 
      {
         if (Instance == null)
