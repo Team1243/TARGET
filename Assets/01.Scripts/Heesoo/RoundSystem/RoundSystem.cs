@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RoundSystem : MonoBehaviour
 {
+    public static RoundSystem Instance;
+
     // 현재 라운드수
     private int roundCount = 0;
     // 생성물 생성 위치
@@ -29,6 +31,11 @@ public class RoundSystem : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+
         _enemy = enemyPrefab.GetComponent<Enemy>();
         _human = humanPrefab.GetComponent<Human>();
     }
@@ -116,7 +123,6 @@ public class RoundSystem : MonoBehaviour
         _human.moveSpeed *= 1.02f;
     }
 
-    // 남아있는 Enemy, Human 가져와서 삭제
     [ContextMenu("리셋")]
     public void Reset()
     {
