@@ -15,4 +15,10 @@ public class GameManager : MonoBehaviour
         else
             Destroy(this);
      }
+
+     public void GameOver()
+     {
+        gameState = GameState.End;
+        Debug.Log("Gmae Over");
+     }
 }
