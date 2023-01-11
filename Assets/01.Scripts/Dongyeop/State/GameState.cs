@@ -1,4 +1,4 @@
-public enum gamestate 
+public enum GameState 
 {
     Ready,
     Flying,

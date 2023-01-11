@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 394506158804166088}
   - component: {fileID: 6239967705225551294}
   - component: {fileID: -2232030049112727846}
-  - component: {fileID: -7137449738887829786}
+  - component: {fileID: -137097682131374373}
   - component: {fileID: 7761269606475726272}
   - component: {fileID: -7296012637615081835}
   m_Layer: 0
@@ -109,7 +109,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &-7137449738887829786
+--- !u!61 &-137097682131374373
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

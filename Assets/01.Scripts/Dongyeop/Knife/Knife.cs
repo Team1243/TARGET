@@ -27,7 +27,7 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
 
     private void Start() 
     {
-        GameManager.Instance.gamestate = gamestate.Ready;
+        GameManager.Instance.gameState = GameState.Ready;
     }
 
     private void Update() 
@@ -38,14 +38,14 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
 
     private void DebuggingUpdate()
     {
-        switch (GameManager.Instance.gamestate)
+        switch (GameManager.Instance.gameState)
         {
-            case (gamestate.Ready):
-                GameManager.Instance.gamestate = gamestate.Flying;
+            case (GameState.Ready):
+                GameManager.Instance.gameState = GameState.Flying;
                 KnifeRotation();
                 KnifeMove();
                 break;
-            case (gamestate.Flying): 
+            case (GameState.Flying): 
                 KnifeShoot();
                 break;
         }
@@ -66,10 +66,10 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
         sequence.Append(_knifeRotator.DOLocalMove(_knifeMoveMaxPos, _moveTime).SetLoops(2, LoopType.Yoyo));
         sequence.AppendCallback(() =>
         {
-            if (GameManager.Instance.gamestate != gamestate.Flying)
+            if (GameManager.Instance.gameState != GameState.Flying)
             {
-                sequenceRotation.Kill();
-                GameManager.Instance.GameOver();
+                // sequenceRotation.Kill();
+                // GameManager.Instance.GameOver();
             }
         });
     }
@@ -77,7 +77,7 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
     private void KnifeShoot() // 칼이 올라간 상태에서 칼을 발사
     {
         Instantiate(_bullet, _knifeTrm.position, _knifeTrm.rotation);
-        GameManager.Instance.gamestate = gamestate.Shooting;
+        GameManager.Instance.gameState = GameState.Shooting;
         sequenceRotation.Kill();
         _knifeRotator.localRotation = Quaternion.identity;
         _knifeSpriteRenderer.enabled = false;
@@ -85,7 +85,8 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
 
     public void ReGame()
     {
+        print(_knifeSpriteRenderer);
         _knifeSpriteRenderer.enabled = true;
-        GameManager.Instance.gamestate = gamestate.Ready;
+        GameManager.Instance.gameState = GameState.Ready;
     }
 }

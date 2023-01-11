@@ -23,8 +23,10 @@ public class KnifeCollision : MonoBehaviour
             case "Enemy":
                 StartCoroutine(CollisionBullet());
                 break;
-            case "OutLine":
+            case "BulletDelLine":
                 StartCoroutine(CollisionBullet());
+                break;
+            case "OutLine":
                 break;
             default:
                 Debug.LogError($"{other.name} is none tag Object");
@@ -34,7 +36,7 @@ public class KnifeCollision : MonoBehaviour
 
     private IEnumerator CollisionBullet() // Bullet이 무언가에 닿아서 재시작/게임종료가 필요할떄 실행 
     {
-        GameManager.Instance.gamestate = gamestate.End;
+        GameManager.Instance.gameState = GameState.End;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(1.5f);
