@@ -23,8 +23,11 @@ public class RoundText : MonoBehaviour
             textMeshProUGUI.enabled = true;
             ChangeRoundText();
         }
-        
     }
 
-    public void ChangeRoundText() => textMeshProUGUI.text = $"Round {RoundSystem.Instance.roundCount}";
+    public void ChangeRoundText()
+    {
+        if (GameManager.Instance.gameState == GameState.GameOver) return;
+        textMeshProUGUI.text = $"Round {RoundSystem.Instance.roundCount}";
+    }
 }
