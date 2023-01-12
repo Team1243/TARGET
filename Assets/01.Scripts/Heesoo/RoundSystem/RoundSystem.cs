@@ -70,7 +70,7 @@ public class RoundSystem : MonoBehaviour
 
     IEnumerator NextGame()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.25f);
 
         Debug.Log("NextGame");
 
@@ -84,8 +84,6 @@ public class RoundSystem : MonoBehaviour
 
     public void Spawn()
     {
-        print("Spawn");
-
         // 에너미 소환
         for (int i = 0; i < enemySpawnCount; i++)
         {
@@ -112,25 +110,23 @@ public class RoundSystem : MonoBehaviour
     public void ChangeProperty()
     {
         // 생성수 조정
-        if (roundCount % 25 == 0 && humanSpawnCount < 5)
+        if (roundCount % 25 == 0 && humanSpawnCount < 4)
         {
             humanSpawnCount++;
         }
         
-        if (roundCount % 40 == 0 && enemySpawnCount < 3)
+        if (roundCount % 40 == 0 && enemySpawnCount < 2)
         {
             enemySpawnCount++;
         }
 
         // 생성물들 속도 조정
-        _enemy.moveSpeed *= 1.03f;
-        _human.moveSpeed *= 1.03f;
+        _enemy.moveSpeed *= 1.015f;
+        _human.moveSpeed *= 1.015f;
     }
 
     public void ObjectReset()
     {
-        print("ObjReset");
-
         for (int i = 0; i < garbage.transform.childCount; i++)
         {
             GameObject obj = transform.GetChild(0).GetChild(i).gameObject;
