@@ -70,6 +70,8 @@ public class RoundSystem : MonoBehaviour
 
     IEnumerator NextGame()
     {
+        yield return new WaitForSeconds(0.1f);
+
         Debug.Log("NextGame");
 
         Init();
