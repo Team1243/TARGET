@@ -670,6 +670,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b85a652291db724e93877a4d7d98baf, type: 3}
+--- !u!114 &3195146031494545290 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2082357759, guid: 3b85a652291db724e93877a4d7d98baf, type: 3}
+  m_PrefabInstance: {fileID: 3195146031494545289}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1817d3274abbe704abfea32b5796ffde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3847925082623649030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -734,6 +745,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2146258575}
     - target: {fileID: 3847925082460564139, guid: c75b2d247a29de1438c42fbd5121be60, type: 3}
+      propertyPath: _gameOver.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847925082460564139, guid: c75b2d247a29de1438c42fbd5121be60, type: 3}
+      propertyPath: _gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847925082460564139, guid: c75b2d247a29de1438c42fbd5121be60, type: 3}
       propertyPath: _gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 840542150}
@@ -746,9 +765,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1334956333}
     - target: {fileID: 3847925082460564139, guid: c75b2d247a29de1438c42fbd5121be60, type: 3}
+      propertyPath: _gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 3195146031494545290}
+    - target: {fileID: 3847925082460564139, guid: c75b2d247a29de1438c42fbd5121be60, type: 3}
       propertyPath: _gameClear.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 840542150}
+    - target: {fileID: 3847925082460564139, guid: c75b2d247a29de1438c42fbd5121be60, type: 3}
+      propertyPath: _gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847925082460564139, guid: c75b2d247a29de1438c42fbd5121be60, type: 3}
+      propertyPath: _gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetRecord
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847925082460564139, guid: c75b2d247a29de1438c42fbd5121be60, type: 3}
+      propertyPath: _gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: RecordRoundText, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847925082460564139, guid: c75b2d247a29de1438c42fbd5121be60, type: 3}
+      propertyPath: _gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847925082460564139, guid: c75b2d247a29de1438c42fbd5121be60, type: 3}
+      propertyPath: _gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c75b2d247a29de1438c42fbd5121be60, type: 3}
 --- !u!1001 &5535883636771415577

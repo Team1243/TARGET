@@ -109,6 +109,11 @@ public class RoundSystem : MonoBehaviour
 
     public void ChangeProperty()
     {
+        if (roundCount == 4)
+        {
+            humanSpawnCount++;
+        }
+
         // 생성수 조정
         if (roundCount % 25 == 0 && humanSpawnCount < 4)
         {
@@ -141,6 +146,6 @@ public class RoundSystem : MonoBehaviour
         _enemy.moveSpeed = enemySpeed;
         _human.moveSpeed = humanSpeed;
         enemySpawnCount = 1;
-        humanSpawnCount = 2;
+        humanSpawnCount = 0;
     }
 }

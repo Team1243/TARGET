@@ -52,7 +52,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 850003320970483734, guid: 8f7b928207eef3746b33ba9c1b32998b, type: 3}
   humanPrefab: {fileID: 7059964257572700297, guid: 974376f514b129042bf6466af3175e25, type: 3}
   enemySpawnCount: 1
-  humanSpawnCount: 2
+  humanSpawnCount: 0
   enemySpeed: 0.1
   humanSpeed: 0.15
 --- !u!1 &295019953452408300
