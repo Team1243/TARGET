@@ -22,8 +22,6 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
     private Transform _knifeTrm;
     private Sequence sequenceRotation;
 
-    private TextMeshProUGUI txt;
-
     private int _knifeRotationIndex;
 
     public bool isKnifeMoveEnd = false;
@@ -33,19 +31,12 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
         _knifeRotator = transform.GetChild(0).GetComponent<Transform>();
         _knifeTrm = transform.GetChild(0).GetChild(0).GetComponent<Transform>();
         _knifeSpriteRenderer = transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
-
-        txt = GameObject.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
     }
 
     private void Update() 
     {
         if (Input.GetMouseButtonDown(0))
-        {
             DebuggingUpdate();
-            txt.text = "YES";
-        }
-        else
-            txt.text = "NO";
     }
 
     private void DebuggingUpdate()
