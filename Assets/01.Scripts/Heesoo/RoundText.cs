@@ -14,11 +14,17 @@ public class RoundText : MonoBehaviour
 
     private void Update()
     {
-        ChangeRoundText();
+        if (GameManager.Instance.gameState == GameState.Title)
+        {
+            textMeshProUGUI.enabled = false;
+        }
+        else
+        {
+            textMeshProUGUI.enabled = true;
+            ChangeRoundText();
+        }
+        
     }
 
-    public void ChangeRoundText()
-    {
-        textMeshProUGUI.text = $"Round {RoundSystem.Instance.roundCount}";
-    }
+    public void ChangeRoundText() => textMeshProUGUI.text = $"Round {RoundSystem.Instance.roundCount}";
 }
