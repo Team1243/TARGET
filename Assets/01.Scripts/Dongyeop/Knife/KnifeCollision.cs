@@ -52,6 +52,7 @@ public class KnifeCollision : MonoBehaviour
             case "BulletDelLine":
                 StartCoroutine(CollisionBullet());
                 break;
+            case "Other":
             case "OutLine":
             case "WhiteBuilding":
                 break;
