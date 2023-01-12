@@ -24,7 +24,7 @@ public class KnifeCollision : MonoBehaviour
                 _audioSource.Play();
                 if (GameManager.Instance.gameState == GameState.GameClear)
                     return;
-                
+                CameraManager.Instance.CameraShake();
                 GameManager.Instance.GameOver();
                 Instantiate(_particle, transform.position, Quaternion.identity);
                 Destroy(gameObject);
@@ -33,7 +33,7 @@ public class KnifeCollision : MonoBehaviour
                 _audioSource.Play();
                 if (GameManager.Instance.gameState == GameState.GameOver)
                     return;
-
+                CameraManager.Instance.CameraShake();
                 _dieEnemyCount++;
                 if (RoundSystem.Instance.enemySpawnCount <= _dieEnemyCount)
                 {

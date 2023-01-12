@@ -43,14 +43,14 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
     {
         switch (GameManager.Instance.gameState)
         {
+            case (GameState.Flying): 
+                KnifeSlow.Instance.Shoot();
+                KnifeShoot();
+                break;
             case (GameState.Ready):
                 GameManager.Instance.gameState = GameState.Flying;
                 KnifeRotation();
                 KnifeMove();
-                break;
-            case (GameState.Flying): 
-                KnifeSlow.Instance.Shoot();
-                KnifeShoot();
                 break;
         }
     }
