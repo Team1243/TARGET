@@ -12,6 +12,11 @@ public class RoundText : MonoBehaviour
         textMeshProUGUI = GetComponent<TextMeshProUGUI>();
     }
 
+    private void Update()
+    {
+        ChangeRoundText();
+    }
+
     public void ChangeRoundText()
     {
         textMeshProUGUI.text = $"Round {RoundSystem.Instance.roundCount}";
