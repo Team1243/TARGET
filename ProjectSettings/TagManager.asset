@@ -9,6 +9,7 @@ TagManager:
   - OutLine
   - BulletDelLine
   - WhiteBuilding
+  - Other
   layers:
   - Default
   - TransparentFX

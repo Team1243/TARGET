@@ -49,6 +49,7 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
                 KnifeMove();
                 break;
             case (GameState.Flying): 
+                KnifeSlow.Instance.Shoot();
                 KnifeShoot();
                 break;
         }
@@ -71,6 +72,7 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
         sequence.Append(_knifeRotator.DOLocalMove(_knifeMoveMaxPos, _moveTime).SetLoops(2, LoopType.Yoyo));
         sequence.AppendCallback(() =>
         {
+            KnifeSlow.Instance.ReGame();
             isKnifeMoveEnd = true;;
             if (GameManager.Instance.gameState == GameState.Flying)
             {
