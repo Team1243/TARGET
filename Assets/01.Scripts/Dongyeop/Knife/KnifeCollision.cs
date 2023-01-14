@@ -34,8 +34,9 @@ public class KnifeCollision : MonoBehaviour
                 if (GameManager.Instance.gameState == GameState.GameOver)
                     return;
                 CameraManager.Instance.CameraShake();
-                _dieEnemyCount++;
-                if (RoundSystem.Instance.enemySpawnCount <= _dieEnemyCount)
+                // _dieEnemyCount++;
+                _knife.dieEnemyCount++;
+                if (RoundSystem.Instance.enemySpawnCount <= _knife.dieEnemyCount)
                 {
                     GameManager.Instance.GameClear();
                     _dieEnemyCount = 0;

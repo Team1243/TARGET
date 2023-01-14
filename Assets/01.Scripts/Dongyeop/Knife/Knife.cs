@@ -26,6 +26,8 @@ public class Knife : MonoBehaviour //Knife의 초반 움직임을 담당
 
     public bool isKnifeMoveEnd = false;
 
+    public int dieEnemyCount = 0;
+
     private void Awake() 
     {
         _knifeRotator = transform.GetChild(0).GetComponent<Transform>();
