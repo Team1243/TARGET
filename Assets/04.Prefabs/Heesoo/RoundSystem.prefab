@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d422802cb709024e91f6dc5316b8c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundCount: 1
+  roundCount: 0
   garbage: {fileID: 295019953452408300}
   leftSpawnPosition: {x: -2.2, y: 2.8}
   rightSpawnPosition: {x: 2.2, y: 2.8}

@@ -42,7 +42,12 @@ public class RoundSystem : MonoBehaviour
 
     private void Start()
     {
-        Init();
+        // Init();
+        roundCount = 0;
+        _enemy.moveSpeed = enemySpeed;
+        _human.moveSpeed = humanSpeed;
+        enemySpawnCount = 1;
+        humanSpawnCount = 0;
     }
 
     public void RoundLoop()
@@ -58,14 +63,13 @@ public class RoundSystem : MonoBehaviour
     IEnumerator NextRound()
     {
         Debug.Log("NextRound");
-        roundCount++;
 
         ObjectReset();
         
         yield return null;
         
-        Spawn();
         ChangeProperty();
+        Spawn();
     }
 
     IEnumerator NextGame()
@@ -109,18 +113,20 @@ public class RoundSystem : MonoBehaviour
 
     public void ChangeProperty()
     {
+        roundCount++;
+
         if (roundCount == 4)
         {
             humanSpawnCount++;
         }
 
         // 생성수 조정
-        if (roundCount % 25 == 0 && humanSpawnCount < 4)
+        if (roundCount % 15 == 0 && humanSpawnCount < 4)
         {
             humanSpawnCount++;
         }
         
-        if (roundCount % 40 == 0 && enemySpawnCount < 2)
+        if (roundCount % 35 == 0 && enemySpawnCount < 2)
         {
             enemySpawnCount++;
         }
