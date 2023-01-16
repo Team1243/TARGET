@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KnifeCollision : MonoBehaviour
@@ -22,33 +21,12 @@ public class KnifeCollision : MonoBehaviour
         {
             case "NormalHuman":
                 _audioSource.Play();
-                if (GameManager.Instance.gameState == GameState.GameClear)
+                if (GameManager.Instance.gameState == GameState.End)
                     return;
-                CameraManager.Instance.CameraShake();
-                GameManager.Instance.GameOver();
-                Instantiate(_particle, transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                CollisionNormalHuman();
                 break;
             case "Enemy":
-                _audioSource.Play();
-                if (GameManager.Instance.gameState == GameState.GameOver)
-                    return;
-                CameraManager.Instance.CameraShake();
-                // _dieEnemyCount++;
-                _knife.dieEnemyCount++;
-                if (RoundSystem.Instance.enemySpawnCount <= _knife.dieEnemyCount)
-                {
-                    GameManager.Instance.GameClear();
-                    _dieEnemyCount = 0;
-                    Destroy(other.gameObject);
-                    StartCoroutine(CollisionBullet());
-                }
-                else
-                {
-                    Destroy(other.gameObject);
-                    StartCoroutine(CollisionBullet());
-                }
-                Instantiate(_particle, transform.position, Quaternion.identity);
+                CollisionEnemy(other);
                 break;
             case "BulletDelLine":
                 StartCoroutine(CollisionBullet());
@@ -61,6 +39,36 @@ public class KnifeCollision : MonoBehaviour
                 Debug.LogError($"{other.name} is none tag Object");
                 break;
         }
+    }
+
+    private void CollisionNormalHuman()
+    {
+        CameraManager.Instance.CameraShake();
+        GameManager.Instance.GameOver();
+        Instantiate(_particle, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
+    private void CollisionEnemy(Collider2D other)
+    {
+        _audioSource.Play();
+        if (GameManager.Instance.gameState == GameState.GameOver)
+            return;
+        CameraManager.Instance.CameraShake();
+        _knife.dieEnemyCount++;
+        if (RoundSystem.Instance.enemySpawnCount <= _knife.dieEnemyCount)
+        {
+            GameManager.Instance.GameClear();
+            _dieEnemyCount = 0;
+            Destroy(other.gameObject);
+            StartCoroutine(CollisionBullet());
+        }
+        else
+        {
+            Destroy(other.gameObject);
+            StartCoroutine(CollisionBullet());
+        }
+        Instantiate(_particle, transform.position, Quaternion.identity);
     }
 
     private IEnumerator CollisionBullet() // Bullet이 무언가에 닿아서 재시작/게임종료가 필요할떄 실행 

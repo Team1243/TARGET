@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
 
     public void GameClear()
      {
-        gameState = GameState.GameClear;
         _gameClear?.Invoke();
         print("Game Clear");
      }
@@ -64,7 +63,6 @@ public class GameManager : MonoBehaviour
      {
         gameState = GameState.GameOver;
         _gameOver?.Invoke();
-        gameState = GameState.GameOver;
         print("Game Over");
      }
 }
