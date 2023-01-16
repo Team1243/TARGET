@@ -20,7 +20,7 @@ public class RecordRoundText : MonoBehaviour
         ChangeRecordText();
     }
 
-    public void SetRecord()
+    public void SaveRecord()
     {
         if (RoundSystem.Instance.roundCount > round)
         {

@@ -14,6 +14,10 @@ public class RoundText : MonoBehaviour
 
     private void Update()
     {
+        // 여기 수정 필요
+        // 처음 타이틀 화면에서 안 나오게 해주는거
+        // 나중에 UI 수정 가능성 있으니 추후 변경
+
         if (GameManager.Instance.gameState == GameState.Title)
         {
             textMeshProUGUI.enabled = false;
@@ -28,6 +32,7 @@ public class RoundText : MonoBehaviour
     public void ChangeRoundText()
     {
         if (GameManager.Instance.gameState == GameState.GameOver) return;
+
         textMeshProUGUI.text = $"Round {RoundSystem.Instance.roundCount}";
     }
 }

@@ -580,6 +580,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1778102343, guid: 3b85a652291db724e93877a4d7d98baf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3195146032503573682, guid: 3b85a652291db724e93877a4d7d98baf, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -782,7 +786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3847925082460564139, guid: c75b2d247a29de1438c42fbd5121be60, type: 3}
       propertyPath: _gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: SetRecord
+      value: SaveRecord
       objectReference: {fileID: 0}
     - target: {fileID: 3847925082460564139, guid: c75b2d247a29de1438c42fbd5121be60, type: 3}
       propertyPath: _gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
