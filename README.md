@@ -13,7 +13,7 @@
    
    게임장르: 하이퍼캐주얼, 아케이드
    
-    플랫폼: 안드로이드
+   플랫폼: 안드로이드
     
  
  
@@ -22,6 +22,6 @@
   
    플레이영상 : https://youtu.be/q-Lw5YMzyFA
    
-    빌드본 : https://drive.google.com/file/d/1dGa0c56MMdSQ2vvpzXgQH4x_ixzrCh3_/view?usp=sharing
+   빌드본 : https://drive.google.com/file/d/1dGa0c56MMdSQ2vvpzXgQH4x_ixzrCh3_/view?usp=sharing
   
     
