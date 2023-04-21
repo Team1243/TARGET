@@ -57,8 +57,6 @@ public class RoundSystem : MonoBehaviour
 
     IEnumerator NextRound()
     {
-        Debug.Log("NextRound");
-
         ObjectReset();
         ChangeProperty();
         
@@ -69,8 +67,6 @@ public class RoundSystem : MonoBehaviour
 
     IEnumerator NextGame()
     {
-        Debug.Log("NextGame");
-
         Init();
         ObjectReset();
 

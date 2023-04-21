@@ -16,6 +16,7 @@ public class RecordRoundText : MonoBehaviour
 
     private void Start()
     {
+        // PlayerPrefs.DeleteAll();
         round = PlayerPrefs.GetInt("saveRound");
         ChangeRecordText();
     }
