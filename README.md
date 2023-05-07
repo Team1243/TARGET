@@ -19,10 +19,10 @@
  
  
    ## More information
-  홍보영상 : https://youtu.be/p5gjQAQmGWE
+  홍보영상 : https://youtu.be/H4AQ-C-DFDk
   
-   플레이영상 : https://youtu.be/q-Lw5YMzyFA
+   플레이영상 : https://youtu.be/B9pteplpsls
    
-   빌드본 : https://drive.google.com/file/d/1dGa0c56MMdSQ2vvpzXgQH4x_ixzrCh3_/view?usp=sharing
+   다운로드 : https://play.google.com/store/apps/details?id=com.Team1243.TARGET
   
     
